@@ -3,7 +3,7 @@ requires:
     midgardmvc_helper_forms:
         git: https://github.com/midgardproject/midgardmvc_helper_forms.git
 routes:
-    list:
+    list_comments:
         path: '/comments/{$to}'
         controller: com_meego_comments_controllers_list
         action: comments
@@ -11,11 +11,27 @@ routes:
             content: cmc-show-comments
 #    list_feed:
 #        path: '/comments/{$to}/atom.xml'
-#    comment_create:
-#        path: '/comment/create/{$to}'
-#    comment_read:
-#        path: '/comment/{$comment}'
-#    comment_update:
-#        path: '/comment/{$comment}/update'
-#    comment_delete:
-#        path: '/comment/{$comment}/delete'
+    comment_create:
+        path: '/comment/create/{$to}'
+        controller: com_meego_comments_controllers_comment
+        action: create
+        template_aliases:
+            content: cmc-edit-comment
+    comment_read:
+        path: '/comment/{$comment}'
+        controller: com_meego_comments_controllers_comment
+        action: read
+        template_aliases:
+            content: cmc-show-comment
+    comment_update:
+        path: '/comment/{$comment}/update'
+        controller: com_meego_comments_controllers_comment
+        action: update
+        template_aliases:
+            content: cmc-edit-comment
+    comment_delete:
+        path: '/comment/{$comment}/delete'
+        controller: com_meego_comments_controllers_comment
+        action: delete
+        template_aliases:
+            content: cmc-delete-comment
