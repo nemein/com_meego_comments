@@ -1,0 +1,21 @@
+version: 0.0.1
+requires:
+    midgardmvc_helper_forms:
+        git: https://github.com/midgardproject/midgardmvc_helper_forms.git
+routes:
+    list:
+        path: '/comments/{$to}'
+        controller: com_meego_comments_controllers_list
+        action: comments
+        template_aliases:
+            content: cmc-show-comments
+#    list_feed:
+#        path: '/comments/{$to}/atom.xml'
+#    comment_create:
+#        path: '/comment/create/{$to}'
+#    comment_read:
+#        path: '/comment/{$comment}'
+#    comment_update:
+#        path: '/comment/{$comment}/update'
+#    comment_delete:
+#        path: '/comment/{$comment}/delete'

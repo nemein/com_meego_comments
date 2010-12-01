@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Schema xmlns="http://www.midgard-project.org/repligard/1.4">
+    <type name="com_meego_comments_comment" table="com_meego_comments_comment">
+        <property name="id" type="unsigned integer" primaryfield="id" index="yes" />
+        <property name="to" type="guid" parentfield="to">
+            <description>Object being commented</description>
+        </property>
+        <property name="up" type="unsigned integer" link="om_meego_comments_comment:id" upfield="up">
+            <description>In case of comment that is a reply to another comment, the parent comment</description>
+        </property>
+        <property name="content" type="text">
+            <description>The actual comment</description>
+        </property>
+    </type>
+
+    <type name="com_meego_comments_remote" extends="com_meego_comments_comment">
+        <property name="remoteid" type="string" index="yes">
+            <description>Remote ID for comments fetched from external source (rss, qaiku, …)</description>
+        </property>
+    </type>
+</Schema>
