@@ -2,10 +2,10 @@
 <Schema xmlns="http://www.midgard-project.org/repligard/1.4">
 
     <view name="comments_author" table="com_meego_comments_comment">
-        <join type="left" class="midgard_user">
-            <condition left="com_meego_comments_comment:metadata.creator" right="midgard_user:guid" />
+        <join type="left" class="midgard_person">
+            <condition left="com_meego_comments_comment:metadata.creator" right="midgard_person:guid" />
         </join>
-        <property name="author" use="com_meego_comments_comment:metadata.creator" />
+        <property name="author" use="midgard_person:realname" />
     </view>
 
 </Schema>
