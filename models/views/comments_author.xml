@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Schema xmlns="http://www.midgard-project.org/repligard/1.4">
 
-    <view name="comments_author">
-        <join type="left" class="com_meego_comments">
+    <view name="comments_author" table="com_meego_comments_comment">
+        <join type="left" class="midgard_user">
             <condition left="com_meego_comments_comment:metadata.creator" right="midgard_user:guid" />
         </join>
         <property name="author" use="com_meego_comments_comment:metadata.creator" />
