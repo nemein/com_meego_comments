@@ -5,7 +5,8 @@
         <join type="left" class="midgard_person">
             <condition left="com_meego_comments_comment:metadata.creator" right="midgard_person:guid" />
         </join>
-        <property name="author" use="midgard_person:realname" />
+        <property name="author_firstname" use="midgard_person:firstname" />
+        <property name="author_lastname" use="midgard_person:lastname" />
     </view>
 
 </Schema>
