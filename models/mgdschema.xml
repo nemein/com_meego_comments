@@ -2,11 +2,14 @@
 <Schema xmlns="http://www.midgard-project.org/repligard/1.4">
     <type name="com_meego_comments_comment" table="com_meego_comments_comment">
         <property name="id" type="unsigned integer" primaryfield="id" index="yes" />
-        <property name="to" type="guid" parentfield="to" field="objectguid">
+        <property name="to" type="guid" parentfield="objectguid" field="objectguid">
             <description>Object being commented</description>
         </property>
         <property name="up" type="unsigned integer" link="com_meego_comments_comment:id" upfield="up">
             <description>In case of comment that is a reply to another comment, the parent comment</description>
+        </property>
+        <property name="title" type="string">
+            <description>Comment subject</description>
         </property>
         <property name="content" type="text">
             <description>The actual comment</description>
