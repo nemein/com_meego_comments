@@ -2,7 +2,7 @@
 <Schema xmlns="http://www.midgard-project.org/repligard/1.4">
     <type name="com_meego_comments_comment" table="com_meego_comments_comment">
         <property name="id" type="unsigned integer" primaryfield="id" index="yes" />
-        <property name="objectguid" type="guid" parentfield="objectguid">
+        <property name="to" type="guid" parentfield="to" field="objectguid">
             <description>Object being commented</description>
         </property>
         <property name="up" type="unsigned integer" link="com_meego_comments_comment:id" upfield="up">

@@ -12,7 +12,7 @@ class com_meego_comments_controllers_comment extends midgardmvc_core_controllers
     {
         $this->data['parent'] = midgard_object_class::get_object_by_guid($args['to']);
         $this->object = new com_meego_comments_comment();
-        $this->object->objectguid = $this->data['parent']->guid;
+        $this->object->to = $this->data['parent']->guid;
     }
 
     public function load_form()
@@ -64,7 +64,7 @@ class com_meego_comments_controllers_comment extends midgardmvc_core_controllers
         (
             'list_comments', array
             (
-                'to' => $this->object->objectguid
+                'to' => $this->object->to
             ),
             $this->request
         );

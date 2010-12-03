@@ -16,7 +16,7 @@ class com_meego_comments_controllers_list
 
         $this->data['comments'] = array();
         $qb = com_meego_comments_comment::new_query_builder();
-        $qb->add_constraint('objectguid', '=', $args['to']);
+        $qb->add_constraint('to', '=', $args['to']);
         $qb->add_order('metadata.published', 'ASC');
         $comments = $qb->execute();
         foreach ($comments as $comment)
