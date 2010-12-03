@@ -9,6 +9,12 @@ routes:
         action: comments
         template_aliases:
             content: cmc-show-comments
+    list_comments_tree:
+        path: '/comments/tree/{$to}'
+        controller: com_meego_comments_controllers_list
+        action: comments_tree
+        template_aliases:
+            content: cmc-show-comments_tree
 #    list_feed:
 #        path: '/comments/{$to}/atom.xml'
     comment_create:

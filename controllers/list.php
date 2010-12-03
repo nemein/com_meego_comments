@@ -15,10 +15,23 @@ class com_meego_comments_controllers_list
         }
 
         $this->data['comments'] = array();
-        $qb = com_meego_comments_comment::new_query_builder();
-        $qb->add_constraint('to', '=', $args['to']);
-        $qb->add_order('metadata.published', 'ASC');
-        $comments = $qb->execute();
+
+        $storage = new midgard_query_storage('com_meego_comments_comment');
+        $q = new midgard_query_select($storage);
+        $q->set_constraint
+        (
+            new midgard_query_constraint
+            (
+                new midgard_query_property('to', $storage),
+                '=',
+                new midgard_query_value($this->data['to']->guid)
+            )
+        );
+
+        $q->add_order(new midgard_query_property('metadata.created', $storage), SORT_ASC);
+        $q->execute();
+        $comments = $q->list_objects();
+
         foreach ($comments as $comment)
         {
             $this->data['comments'][] = $comment;
@@ -31,6 +44,17 @@ class com_meego_comments_controllers_list
         else
         {
             $this->data['can_post'] = false;
+        }
+    }
+
+    public function get_comments_tree(array $args)
+    {
+        $this->get_comments($args);
+        $comments = $this->data['comments'];
+        $this->data['comments'] = array();
+        foreach ($comments as $comment)
+        {
+            com_meego_comments_tree::map_comment_to_tree($comment, $this->data['comments']);
         }
     }
 }
