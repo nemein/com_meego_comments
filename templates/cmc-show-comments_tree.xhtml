@@ -1,0 +1,30 @@
+<ol metal:define-macro="cmc-show-comments_tree">
+    <li tal:repeat="comment comments">
+        <div class="content" tal:content="structure comment/content">
+            First post!
+        </div>
+        <tal:block tal:condition="exists: comment/subcomments">
+            <tal:block tal:define="comments comment/subcomments" metal:use-macro="cmc-show-comments_tree" />
+        </tal:block>
+    </li>
+</ol>
+
+<div class="comments">
+    <h2>Comments</h2>
+
+    <tal:block tal:condition="com_meego_comments/comments">
+        <tal:block metal:use-macro="cmc-show-comments_tree" tal:define="comments com_meego_comments/comments" />
+    </tal:block>
+
+    <div tal:condition="com_meego_comments/can_post">
+        <p tal:condition="not: com_meego_comments/comments">
+            Be the first to comment!
+        </p>
+
+        <div class="comment" tal:content="structure php:midgardmvc.templating.dynamic_load('com_meego_comments', 'comment_create', array('to' => com_meego_comments['to'].guid))"></div>
+    </div>
+
+    <p tal:condition="not: com_meego_comments/can_post">
+        You need to log in to comment.
+    </p>
+</div>

@@ -1,7 +1,7 @@
 <?php
 class com_meego_comments_tree
 {
-    public static map_comment_to_tree(com_meego_comments_comment $comment, array &$tree)
+    public static function map_comment_to_tree(com_meego_comments_comment $comment, array &$tree)
     {
         $comment->subcomments = array();
 
