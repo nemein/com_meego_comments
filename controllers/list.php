@@ -16,7 +16,7 @@ class com_meego_comments_controllers_list
 
         $this->data['comments'] = array();
 
-        $storage = new midgard_query_storage('com_meego_comments_comment');
+        $storage = new midgard_query_storage('com_meego_comments_comment_author');
         $q = new midgard_query_select($storage);
         $q->set_constraint
         (
@@ -28,13 +28,13 @@ class com_meego_comments_controllers_list
             )
         );
 
-        $q->add_order(new midgard_query_property('metadata.created', $storage), SORT_ASC);
+        $q->add_order(new midgard_query_property('posted', $storage), SORT_ASC);
         $q->execute();
         $comments = $q->list_objects();
 
         foreach ($comments as $comment)
         {
-            $this->data['comments'][] = $comment;
+            $this->data['comments'][$comment->commentid] = $comment;
         }
 
         if (midgardmvc_core::get_instance()->authentication->is_user())
