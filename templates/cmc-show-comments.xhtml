@@ -3,9 +3,7 @@
 
     <ol tal:condition="com_meego_comments/comments">
         <li tal:repeat="comment com_meego_comments/comments">
-            <div class="content" tal:content="structure comment/content">
-                First post!
-            </div>
+            <mgd:include>cmc-show-comment</mgd:include>
         </li>
     </ol>
 
