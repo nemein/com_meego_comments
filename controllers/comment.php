@@ -124,7 +124,7 @@ class com_meego_comments_controllers_comment extends midgardmvc_core_controllers
             $transaction->begin();
             $this->object->delete();
             $transaction->commit();
-
+            $this->mvc->log(__CLASS__, 'Comment with id: ' . $this->object->id . ' deleted', 'info');
             $this->mvc->cache->invalidate(array($this->object->guid));
 
             if (array_key_exists('relocate', $_GET))
